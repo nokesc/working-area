@@ -1,0 +1,16 @@
+fileGen:
+  - template: bash/docker-project
+    overwrite: false
+    model:
+      parameters:
+      - name: imageName
+        type: string
+        description: Docker image to run
+      - name: interactive
+        type: boolean
+        description: Make shell interactive
+      commands:
+      - name: run
+      - name: build
+      - name: remote-build
+        
