@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info" dest="err">
+	<Appenders>
+		<Console name="sysout" target="SYSTEM_OUT">
+			<PatternLayout pattern="%d{ISO8601_OFFSET_DATE_TIME_HH} [%level] [%mdc{x-request-id}] thread=&quot;%t&quot; logger=&quot;%c{3.}&quot; %msg%n"></PatternLayout>
+		</Console>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.springframework.boot" level="error" additivity="false">
+			<AppenderRef ref="sysout" />
+		</Logger>
+		<Root level="INFO">
+			<AppenderRef ref="sysout" />
+		</Root>
+	</Loggers>
+</Configuration>

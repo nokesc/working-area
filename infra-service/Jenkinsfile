@@ -1,0 +1,35 @@
+node{
+  stage ('Clone') {
+    checkout scm
+  }	
+  stage ('Build') {
+    env.JAVA_HOME="${tool 'open-jdk11'}"
+    env.POM_ARTIFACTID = readMavenPom().getArtifactId()
+    env.POM_VERSION = readMavenPom().getVersion()
+    env.LOCAL_IMAGE = "${POM_ARTIFACTID}:${POM_VERSION}-${BRANCH_NAME}-${BUILD_NUMBER}"
+    withFolderProperties {
+      echo "DOCKER_PUB_HOST=${DOCKER_PUB_HOST}"
+      env.REMOTE_IMAGE = "${DOCKER_PUB_HOST}/${LOCAL_IMAGE}"    
+    }
+    withMaven(maven: '3.6.2') {
+      sh "mvn -DADD_GIT_PROPERTIES=true clean verify"
+    }
+  }
+  stage ('Publish Image') {
+sh '''
+set > target/env.log
+./docker-build.sh
+'''
+  }
+  stage ('Update Deploy Config in Git') {
+    build job: 'k8s-poc/sb1-deploy/dev-image-update', parameters: [string(name: 'KST_IMAGE', value: "${REMOTE_IMAGE}")]
+  }
+  
+  stage ('Deploy to Dev') {
+    build job: 'k8s-poc/sb1-deploy/dev-sdg-poc'
+  }
+  
+  stage ('Functional Testing') {
+	// TODO
+  }
+}
