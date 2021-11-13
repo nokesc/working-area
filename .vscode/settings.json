@@ -1,0 +1,7 @@
+{
+    "files.exclude": {
+        "dev-companion/": true,
+        "infra-service/": true,
+        "sdlc-dashboard/": true
+    }
+}
