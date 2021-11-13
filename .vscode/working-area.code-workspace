@@ -1,0 +1,33 @@
+{
+    "folders": [
+      {
+        "name": "working-area",
+        "path": "../"
+      },
+      {
+        "name": "working-area/dev-companion",
+        "path": "../dev-companion"
+      },
+      {
+        "name": "working-area/infra-service",
+        "path": "../infra-service"
+      },
+      {
+        "name": "working-area/sdlc-dashboard",
+        "path": "../sdlc-dashboard"
+      },
+    ],
+    "settings": {
+      "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "dev-companion/": true,
+        "infra-service/": true,
+        "sdlc-dashboard/": true
+      }
+    }
+  }
