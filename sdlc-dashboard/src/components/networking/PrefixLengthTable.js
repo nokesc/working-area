@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from "axios"
 import Table from 'react-bootstrap/esm/Table';
 
-const baseURL = process.env.REACT_APP_infra_service_url + "/prefix-lengths";
+const baseURL = process.env.REACT_APP_infra_service_url + "/ipv4-network-reference-data/prefix-lengths";
 
 const PrefixLengthTable = () => {
   console.log("baseURL=" + baseURL);

@@ -1,6 +1,7 @@
 package com.cnokes.infra_service.network;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -14,6 +15,9 @@ public class IPV4Utils {
         public static final String _10_0_0_0__8 = "10.0.0.0/8";
         public static final String _172_16_0_0__12 = "172.16.0.0/12";
         public static final String _192_168_0_0__16 = "192.168.0.0/16";
+
+        public static final List<String> ALL = Collections
+                .unmodifiableList(Arrays.asList(_10_0_0_0__8, _172_16_0_0__12, _192_168_0_0__16));
     }
 
     public static List<Integer> toOctets(String ipv4Address) {
@@ -103,7 +107,8 @@ public class IPV4Utils {
         private final PrefixLength prefixLength;
         private final SubnetUtils subnetUtils;
 
-        private CIDRBlock(String value, String address, List<Integer> octets, PrefixLength prefixLength, SubnetUtils subnetUtils) {
+        private CIDRBlock(String value, String address, List<Integer> octets, PrefixLength prefixLength,
+                SubnetUtils subnetUtils) {
             this.value = value;
             this.address = address;
             this.addressAsLong = IPV4Utils.toLong(octets);
