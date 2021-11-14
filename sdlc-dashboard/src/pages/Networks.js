@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AppNavBar from '../components/AppNavBar'
+import AppNavBar from './AppNavBar'
 
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
@@ -7,6 +7,7 @@ import Col from 'react-bootstrap/esm/Col';
 
 import NetworkPlan from '../components/networking/NetworkPlan.js';
 import PrefixLengthTable from '../components/networking/PrefixLengthTable.js';
+import PrivateCidrBlocks from '../components/networking/PrivateCidrBlocks.js';
 
 import axios from "axios"
 
@@ -37,6 +38,7 @@ const Networks = () => {
       <Container fluid>
         <Row>
           <Col md={6}><PrefixLengthTable /></Col>
+          <Col md={6}><PrivateCidrBlocks /></Col>
         </Row>
       </Container>
     </>

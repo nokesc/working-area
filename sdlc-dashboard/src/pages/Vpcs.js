@@ -1,5 +1,5 @@
 import React from 'react';
-import AppNavBar from '../components/AppNavBar'
+import AppNavBar from './AppNavBar'
 
 const Vpcs = () => {
   return (

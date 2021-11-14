@@ -1,5 +1,5 @@
 import React from 'react';
-import AppNavBar from '../components/AppNavBar'
+import AppNavBar from './AppNavBar'
 import logo from './logo.svg';
 import './App.css';
 
