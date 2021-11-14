@@ -1,5 +1,7 @@
 package com.cnokes.infra_service;
 
+import java.io.IOException;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -41,7 +43,7 @@ public class InfraServiceConfiguration {
 		};
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		SpringApplication.run(InfraServiceConfiguration.class, args);
 	}
 }

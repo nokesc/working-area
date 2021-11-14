@@ -1,7 +1,11 @@
 {
     "files.exclude": {
-        "dev-companion/": true,
-        "infra-service/": true,
-        "sdlc-dashboard/": true
+        // "dev-companion/": true,
+        // "infra-service/": true,
+        // "sdlc-dashboard/": true,
+        // "nebula/": true,
+        // "nebula/nebula-parent": true,
+        // "nebula/nebula-dm": true,
+        // "nebula/nebula-utils": true,
     }
 }

@@ -3,18 +3,11 @@
       {
         "name": "working-area",
         "path": "../"
-      },
-      {
-        "name": "working-area/dev-companion",
-        "path": "../dev-companion"
-      },
-      {
-        "name": "working-area/infra-service",
-        "path": "../infra-service"
-      },
-      {
-        "name": "working-area/sdlc-dashboard",
-        "path": "../sdlc-dashboard"
-      },
-    ]
+      }
+    ],
+    "settings": {
+      "maven.view": "hierarchical",
+      "java.configuration.updateBuildConfiguration": "automatic",
+      "java.dependency.packagePresentation": "flat"
+    }
   }
