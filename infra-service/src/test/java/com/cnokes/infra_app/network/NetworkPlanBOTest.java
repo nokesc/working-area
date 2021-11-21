@@ -1,4 +1,4 @@
-package com.cnokes.infra_service.network;
+package com.cnokes.infra_app.network;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowableOfType;
@@ -7,9 +7,11 @@ import java.util.List;
 
 import com.cnokes.framework.web.exception.FieldError;
 import com.cnokes.framework.web.exception.HttpBadRequestException;
-import com.cnokes.infra_service.network.IPV4Utils.CIDRBlock;
-import com.cnokes.infra_service.network.repo.model.Network;
-import com.cnokes.infra_service.network.repo.model.NetworkPlan;
+import com.cnokes.infra_app.network.service.IPV4Utils.CIDRBlock;
+import com.cnokes.infra_app.network.repo.Network;
+import com.cnokes.infra_app.network.repo.NetworkPlan;
+import com.cnokes.infra_app.network.service.NetworkPlanBO;
+import com.cnokes.infra_app.network.service.PrefixLength;
 
 import org.junit.jupiter.api.Test;
 

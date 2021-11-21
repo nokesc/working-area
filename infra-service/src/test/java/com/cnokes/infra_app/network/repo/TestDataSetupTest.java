@@ -1,12 +1,10 @@
-package com.cnokes.infra_service.network.repo;
+package com.cnokes.infra_app.network.repo;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import com.cnokes.infra_service.network.NetworkPlanBO;
-import com.cnokes.infra_service.network.repo.model.Network;
-import com.cnokes.infra_service.network.repo.model.NetworkPlan;
+import com.cnokes.infra_app.network.service.NetworkPlanBO;
 
 import org.junit.jupiter.api.Test;
 

@@ -1,4 +1,4 @@
-package com.cnokes.infra_service.network;
+package com.cnokes.infra_app.network.service;
 
 import java.util.ArrayList;
 import java.util.Collections;

@@ -59,6 +59,7 @@ public class JacksonUtils {
             }
         }
 
+        @SuppressWarnings("unchecked")
         public final Map<String, Object> readMap(File file) {
             return readValue(file, Map.class);
         }
@@ -81,6 +82,7 @@ public class JacksonUtils {
 
         public <T> T clone(T t) {
             String json = writeValueAsString(t);
+            @SuppressWarnings("unchecked")
             Class<T> cl = (Class<T>) t.getClass();
             return readValue(json, cl);
         }

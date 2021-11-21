@@ -1,16 +1,14 @@
-package com.cnokes.infra_service.network.repo;
+package com.cnokes.infra_app.network.repo;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 
-import com.cnokes.infra_service.network.IPV4Utils.CIDRBlock;
-import com.cnokes.infra_service.network.NetworkPlanBO;
-import com.cnokes.infra_service.network.NetworkService;
-import com.cnokes.infra_service.network.PrefixLength;
-import com.cnokes.infra_service.network.repo.model.Network;
-import com.cnokes.infra_service.network.repo.model.NetworkPlan;
+import com.cnokes.infra_app.network.service.IPV4Utils.CIDRBlock;
+import com.cnokes.infra_app.network.service.NetworkPlanBO;
+import com.cnokes.infra_app.network.service.NetworkService;
+import com.cnokes.infra_app.network.service.PrefixLength;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

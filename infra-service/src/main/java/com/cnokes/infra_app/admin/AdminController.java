@@ -1,4 +1,4 @@
-package com.cnokes.infra_service.admin;
+package com.cnokes.infra_app.admin;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -9,8 +9,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.cnokes.infra_service.network.repo.MongoNetworkPlanRepo;
-import com.cnokes.infra_service.network.repo.TestDataSetup;
+import com.cnokes.infra_app.network.repo.MongoNetworkPlanRepo;
+import com.cnokes.infra_app.network.repo.TestDataSetup;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

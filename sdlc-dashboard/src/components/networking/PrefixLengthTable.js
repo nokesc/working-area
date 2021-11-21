@@ -9,7 +9,7 @@ const PrefixLengthTable = () => {
   const [prefixLengths, setPrefixLengths] = useState([]);
   useEffect(() => {
     console.log("-> useEffect");
-    axios.get(baseURL).then((response) => {      
+    axios.get(baseURL, {withCredentials: true}).then((response) => {      
       setPrefixLengths(response.data);
     });
   }, []);
@@ -41,5 +41,6 @@ const PrefixLengthTable = () => {
     </div>
   );
 };
+
 
 export default PrefixLengthTable;

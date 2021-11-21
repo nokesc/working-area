@@ -1,8 +1,10 @@
-package com.cnokes.infra_service.network;
+package com.cnokes.infra_app.network;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.List;
+
+import com.cnokes.infra_app.network.service.PrefixLength;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

@@ -29,7 +29,7 @@
             "type": "java",
             "name": "Launch InfraServiceConfiguration",
             "request": "launch",
-            "mainClass": "com.cnokes.infra_service.InfraServiceConfiguration",
+            "mainClass": "com.cnokes.infra_app.InfraServiceConfiguration",
             "projectName": "infra-service",
             "cwd": "${workspaceFolder}/infra-service"
         }

@@ -79,6 +79,7 @@ public class Utils {
             }
         }
 
+        @SuppressWarnings("unchecked")
         public final Map<String, Object> readMap(File file) {
             return readValue(file, Map.class);
         }

@@ -19,7 +19,7 @@ const Networks = () => {
 
   useEffect(() => {
     console.log("-> useEffect");
-    axios.get(baseURL).then((response) => {
+    axios.get(baseURL, {withCredentials: true}).then((response) => {
       setNetworkPlans(response.data.slice(0, 2));
     });
   }, []);
@@ -40,6 +40,7 @@ const Networks = () => {
           <Col md={6}><PrefixLengthTable /></Col>
           <Col md={6}><PrivateCidrBlocks /></Col>
         </Row>
+
       </Container>
     </>
   );

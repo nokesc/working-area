@@ -7,7 +7,6 @@ import java.io.Writer;
 import java.net.URL;
 
 import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -21,20 +20,25 @@ import lombok.Getter;
 public class ObjectMapper_ {
 
     @FunctionalInterface
-    interface ObjectMapper2ArgFunction<P1, P2, R> {
-        R apply(ObjectMapper om, P1 p1, P2 p2) throws JsonMappingException, JsonParseException, IOException;
+    interface Jackson1ArgFunction<T, P1, R> {
+        R apply(T om, P1 p1) throws JsonMappingException, JsonParseException, IOException;
     }
 
     @FunctionalInterface
-    interface ObjectMapper2ArgVoidFunction<P1, P2> {
-        void apply(ObjectMapper om, P1 p1, P2 p2) throws JsonMappingException, JsonParseException, IOException;
+    interface Jackson2ArgFunction<T, P1, P2, R> {
+        R apply(T om, P1 p1, P2 p2) throws JsonMappingException, JsonParseException, IOException;
+    }
+
+    @FunctionalInterface
+    interface Jackson2ArgVoidFunction<T, P1, P2> {
+        void apply(T om, P1 p1, P2 p2) throws JsonMappingException, JsonParseException, IOException;
     }
 
     private final ObjectMapper target;
 
-    public <P1, P2, R> R invokeAndWrapChecked(ObjectMapper2ArgFunction<P1, P2, R> function, P1 p1, P2 p2) {
+    public static <T, P1, R> R wrapCE(T t, Jackson1ArgFunction<T, P1, R> function, P1 p1) {
         try {
-            return function.apply(target, p1, p2);
+            return function.apply(t, p1);
         } catch (JsonMappingException e) {
             throw new JsonMappingRuntimeException(e);
         } catch (JsonParseException e) {
@@ -44,9 +48,21 @@ public class ObjectMapper_ {
         }
     }
 
-    public <P1, P2> void invokeAndWrapChecked(ObjectMapper2ArgVoidFunction<P1, P2> function, P1 p1, P2 p2) {
+    public static <T, P1, P2, R> R wrapCE(T t, Jackson2ArgFunction<T, P1, P2, ? extends R> function, P1 p1, P2 p2) {
         try {
-            function.apply(target, p1, p2);
+            return function.apply(t, p1, p2);
+        } catch (JsonMappingException e) {
+            throw new JsonMappingRuntimeException(e);
+        } catch (JsonParseException e) {
+            throw new JsonParseRuntimeException(e);
+        } catch (IOException e) {
+            throw new IORuntimeException(e);
+        }
+    }
+
+    public static <T, P1, P2> void wrapCEVoid(T t, Jackson2ArgVoidFunction<T, P1, P2> function, P1 p1, P2 p2) {
+        try {
+            function.apply(t, p1, p2);
         } catch (JsonMappingException e) {
             throw new JsonMappingRuntimeException(e);
         } catch (JsonParseException e) {
@@ -57,58 +73,46 @@ public class ObjectMapper_ {
     }
 
     public <T> T readValue(File src, Class<T> valueType) {
-        return invokeAndWrapChecked((ObjectMapper2ArgFunction<File, Class<T>, T>) ObjectMapper::readValue, src,
-                valueType);
+        return wrapCE(target, ObjectMapper::<T>readValue, src, valueType);
     }
 
     public <T> T readValue(File src, TypeReference<T> valueTypeRef) {
-        return invokeAndWrapChecked((ObjectMapper2ArgFunction<File, TypeReference<T>, T>) ObjectMapper::readValue, src,
-                valueTypeRef);
+        return wrapCE(target, ObjectMapper::<T>readValue, src, valueTypeRef);
     }
 
     public <T> T readValue(URL src, Class<T> valueType) {
-        return invokeAndWrapChecked((ObjectMapper2ArgFunction<URL, Class<T>, T>) ObjectMapper::readValue, src,
-                valueType);
+        return wrapCE(target, ObjectMapper::<T>readValue, src, valueType);
     }
 
     public <T> T readValue(URL src, TypeReference<T> valueTypeRef) {
-        return invokeAndWrapChecked((ObjectMapper2ArgFunction<URL, TypeReference<T>, T>) ObjectMapper::readValue, src,
-                valueTypeRef);
+        return wrapCE(target, ObjectMapper::<T>readValue, src, valueTypeRef);
     }
 
     public <T> T readValue(String content, Class<T> valueType) {
-        return invokeAndWrapChecked((ObjectMapper2ArgFunction<String, Class<T>, T>) ObjectMapper::readValue, content,
-                valueType);
+        return wrapCE(target, ObjectMapper::<T>readValue, content, valueType);
     }
 
     public <T> T readValue(String content, TypeReference<T> valueTypeRef) {
-        return invokeAndWrapChecked((ObjectMapper2ArgFunction<String, TypeReference<T>, T>) ObjectMapper::readValue,
-                content, valueTypeRef);
+        return wrapCE(target, ObjectMapper::<T>readValue, content, valueTypeRef);
     }
 
     public <T> T readValue(Reader src, Class<T> valueType) {
-        return invokeAndWrapChecked((ObjectMapper2ArgFunction<Reader, Class<T>, T>) ObjectMapper::readValue, src,
-                valueType);
+        return wrapCE(target, ObjectMapper::<T>readValue, src, valueType);
     }
 
     public <T> T readValue(Reader src, TypeReference<T> valueTypeRef) {
-        return invokeAndWrapChecked((ObjectMapper2ArgFunction<Reader, TypeReference<T>, T>) ObjectMapper::readValue,
-                src, valueTypeRef);
+        return wrapCE(target, ObjectMapper::<T>readValue, src, valueTypeRef);
     }
 
     public void writeValue(File resultFile, Object value) {
-        invokeAndWrapChecked((ObjectMapper2ArgVoidFunction<File, Object>) ObjectMapper::writeValue, resultFile, value);
+        wrapCEVoid(target, ObjectMapper::writeValue, resultFile, value);
     }
 
     public void writeValue(Writer w, Object value) {
-        invokeAndWrapChecked((ObjectMapper2ArgVoidFunction<Writer, Object>) ObjectMapper::writeValue, w, value);
+        wrapCEVoid(target, ObjectMapper::writeValue, w, value);
     }
 
     public String writeValueAsString(Object value) {
-        try {
-            return target.writeValueAsString(value);
-        } catch (JsonProcessingException e) {
-            throw new JsonProcessingRuntimeException(e);
-        }
+        return wrapCE(target, ObjectMapper::writeValueAsString, value);
     }
 }

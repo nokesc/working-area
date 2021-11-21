@@ -1,8 +1,6 @@
-package com.cnokes.infra_service.network.repo;
+package com.cnokes.infra_app.network.repo;
 
 import java.util.Optional;
-
-import com.cnokes.infra_service.network.repo.model.NetworkPlan;
 
 import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;

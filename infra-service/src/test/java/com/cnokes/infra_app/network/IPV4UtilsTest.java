@@ -1,11 +1,13 @@
-package com.cnokes.infra_service.network;
+package com.cnokes.infra_app.network;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.List;
 
-import com.cnokes.infra_service.network.IPV4Utils.CIDRBlock;
+import com.cnokes.infra_app.network.service.IPV4Utils;
+import com.cnokes.infra_app.network.service.IPV4Utils.CIDRBlock;
+import com.cnokes.infra_app.network.service.PrefixLength;
 
 import org.junit.jupiter.api.Test;
 

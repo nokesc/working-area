@@ -1,4 +1,6 @@
-package com.cnokes.infra_service.network.repo.model;
+package com.cnokes.infra_app.network.repo;
+
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 
@@ -12,8 +14,10 @@ import lombok.experimental.Accessors;
 @Setter
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @ToString
-public class Network {
-	String owner;
+public class NetworkPlan {
+	String id;
 	String name;
-	String cidrBlock;
+	String description;
+	Network network;
+	List<Network> subnets;
 }

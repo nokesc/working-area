@@ -20,16 +20,4 @@ sh '''
 set > target/env.log
 ./docker-build.sh
 '''
-  }
-  stage ('Update Deploy Config in Git') {
-    build job: 'k8s-poc/sb1-deploy/dev-image-update', parameters: [string(name: 'KST_IMAGE', value: "${REMOTE_IMAGE}")]
-  }
-  
-  stage ('Deploy to Dev') {
-    build job: 'k8s-poc/sb1-deploy/dev-sdg-poc'
-  }
-  
-  stage ('Functional Testing') {
-	// TODO
-  }
 }

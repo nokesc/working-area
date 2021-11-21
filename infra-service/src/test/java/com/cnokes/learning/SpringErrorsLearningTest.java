@@ -2,7 +2,7 @@ package com.cnokes.learning;
 
 import java.util.HashMap;
 
-import com.cnokes.infra_service.network.repo.model.NetworkPlan;
+import com.cnokes.infra_app.network.repo.NetworkPlan;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
@@ -66,6 +66,7 @@ public class SpringErrorsLearningTest {
 	}
 
 	@AllArgsConstructor
+	@SuppressWarnings("unchecked")
 	public static class ObjectContext<T> {
 		private final T target;
 

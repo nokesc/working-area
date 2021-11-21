@@ -12,7 +12,7 @@ const NetworkPlan = (props) => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     console.log("-> useEffect");
-    axios.get(baseURL + "/" + props.id).then((response) => {      
+    axios.get(baseURL + "/" + props.id,  {withCredentials: true}).then((response) => {      
       setNetworkPlan(response.data);
       setLoading(false);
     });

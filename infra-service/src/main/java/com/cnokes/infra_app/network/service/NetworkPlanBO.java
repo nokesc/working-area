@@ -1,4 +1,4 @@
-package com.cnokes.infra_service.network;
+package com.cnokes.infra_app.network.service;
 
 import java.util.Arrays;
 
@@ -6,9 +6,9 @@ import com.cnokes.framework.model.IndexedField;
 import com.cnokes.framework.utils.JacksonUtils;
 import com.cnokes.framework.web.exception.FieldError;
 import com.cnokes.framework.web.exception.HttpBadRequestException;
-import com.cnokes.infra_service.network.IPV4Utils.CIDRBlock;
-import com.cnokes.infra_service.network.repo.model.Network;
-import com.cnokes.infra_service.network.repo.model.NetworkPlan;
+import com.cnokes.infra_app.network.repo.Network;
+import com.cnokes.infra_app.network.repo.NetworkPlan;
+import com.cnokes.infra_app.network.service.IPV4Utils.CIDRBlock;
 
 public class NetworkPlanBO {
 
