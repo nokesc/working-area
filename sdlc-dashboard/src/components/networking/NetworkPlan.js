@@ -7,11 +7,11 @@ const baseURL = process.env.REACT_APP_infra_service_url + "/network-plans";
 
 const NetworkPlan = (props) => {
   
-  console.log("baseURL=" + baseURL);
+  // console.log("baseURL=" + baseURL);
   const [networkPlan, setNetworkPlan] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    console.log("-> useEffect");
+    // TODO Move to InfraServiceAPI
     axios.get(baseURL + "/" + props.id,  {withCredentials: true}).then((response) => {      
       setNetworkPlan(response.data);
       setLoading(false);

@@ -1,33 +1,26 @@
-import React, { useState, useEffect } from 'react';
-import { ipv4NetworkReferenceData_prefixLengths } from '../components/networking/InfraServiceAPI';
-import { Switch, Route } from 'react-router-dom';
-
+import React from 'react';
+import { Provider } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
+import store from '../app/store';
 import Landing from './Landing';
-import Networks from './Networks';
-import NetworkPlanPage from './NetworkPlanPage';
-import Vpcs from './Vpcs';
 import Login from './Login';
-import { ipv4NetworkReferenceData_privateCidrBlocks } from '../components/networking/InfraServiceAPI';
+import NetworkPlanPage from './NetworkPlanPage';
+import Networks from './Networks';
+import Vpcs from './Vpcs';
+
 
 const App = () => {
-
-    const [prefixLengths, setPrefixLengths] = useState([]);
-    useEffect(() => {
-      ipv4NetworkReferenceData_prefixLengths().then((response) => {
-        console.log("-> App.useEffect (prefixLengths)");
-        setPrefixLengths(response.data);
-      });
-    }, []);
-
-    return (
-        <Switch>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/" component={Landing} />
-            <Route exact path="/networks" component={Networks} />
-            <Route exact path="/vpcs" component={Vpcs} />
-            <Route exact path="/network-plans/:id" component={NetworkPlanPage} />
-        </Switch>
-    );
+  return (
+    <Provider store={store}>
+      <Switch>
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/" component={Landing} />
+        <Route exact path="/networks" component={Networks} />
+        <Route exact path="/vpcs" component={Vpcs} />
+        <Route exact path="/network-plans/:id" component={NetworkPlanPage} />
+      </Switch>
+    </Provider>
+  );
 };
 
 export default App;

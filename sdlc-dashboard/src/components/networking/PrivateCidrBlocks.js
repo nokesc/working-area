@@ -1,19 +1,9 @@
-import axios from "axios";
-import React, { useEffect, useState } from 'react';
 import Table from 'react-bootstrap/esm/Table';
-
-const baseURL = process.env.REACT_APP_infra_service_url + "/ipv4-network-reference-data/private-cidr-blocks";
+import {useSelector } from 'react-redux'
+import { selectPrivateCidrBlocks } from './refDataSlice';
 
 const PrivateCidrBlocks = () => {
-  console.log("baseURL=" + baseURL);
-  const [networks, setNetworks] = useState([]);
-  useEffect(() => {
-    console.log("-> useEffect");
-    axios.get(baseURL, {withCredentials: true}).then((response) => {
-      console.log("respone.data=" + response.data);
-      setNetworks(response.data);
-    });
-  }, []);
+  const networks = useSelector(selectPrivateCidrBlocks)
   return (
     <div>
       <h3>Private CIDR Blocks 3</h3>

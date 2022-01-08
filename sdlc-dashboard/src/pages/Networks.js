@@ -9,18 +9,16 @@ import NetworkPlan from '../components/networking/NetworkPlan.js';
 import PrefixLengthTable from '../components/networking/PrefixLengthTable.js';
 import PrivateCidrBlocks from '../components/networking/PrivateCidrBlocks.js';
 
-import axios from "axios"
-
-const baseURL = process.env.REACT_APP_infra_service_url + "/network-plans";
+import { networkPlans as np } from '../components/networking/InfraServiceAPI'
 
 const Networks = () => {
 
   const [networkPlans, setNetworkPlans] = useState([]);
 
   useEffect(() => {
-    console.log("-> useEffect");
-    axios.get(baseURL, {withCredentials: true}).then((response) => {
-      setNetworkPlans(response.data.slice(0, 2));
+    np().then((response) => {
+      setNetworkPlans(response.data);
+      // setNetworkPlans(response.data.slice(0, 2));
     });
   }, []);
 

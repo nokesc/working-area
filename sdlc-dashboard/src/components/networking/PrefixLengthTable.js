@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { ipv4NetworkReferenceData_prefixLengths } from './InfraServiceAPI';
+import React from 'react';
 import Table from 'react-bootstrap/esm/Table';
+import { useSelector } from 'react-redux';
+import { selectPrefixLengths } from './refDataSlice';
 
 const PrefixLengthTable = () => {
-  const [prefixLengths, setPrefixLengths] = useState([]);
-  useEffect(() => {
-    console.log("-> useEffect");
-    ipv4NetworkReferenceData_prefixLengths().then((response) => {
-      console.log("-> useEffect response.data: " + JSON.stringify(response.data));
-      console.log("-> useEffect response.data2: " + JSON.stringify(response.data));
-      console.log("-> prefixLengths before: " + JSON.stringify(prefixLengths));
-      setPrefixLengths(response.data);
-    });
-  }, []);
+  const prefixLengths = useSelector(selectPrefixLengths)
   return (
     <div>
       <h3>Prefix Lengths</h3>
@@ -22,7 +14,7 @@ const PrefixLengthTable = () => {
             <th>Prefix Length</th>
             <th>Netmask</th>
             <th>Hosts</th>
-            <th>Usable Hosts</th>
+            <th>Usable Hosts</th> 
           </tr>
         </thead>
         <tbody>
