@@ -10,7 +10,7 @@ import com.cnokes.framework.web.exception.HttpBadRequestException;
 
 import lombok.Getter;
 
-public class IndexedField<T, F, C extends Comparable<C>> {
+public class IndexedList<T, F, C extends Comparable<C>> {
 
     private final Function<T, F> getField;
     private final Function<F, C> getComparable;
@@ -33,7 +33,7 @@ public class IndexedField<T, F, C extends Comparable<C>> {
 
     private final List<TargetAndField> index = new ArrayList<>();
 
-    public IndexedField(Function<T, F> getField, Function<F, C> getComparable, List<T> index) {
+    public IndexedList(Function<T, F> getField, Function<F, C> getComparable, List<T> index) {
         this.getField = getField;
         this.getComparable = getComparable;
         if (index != null) {

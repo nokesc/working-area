@@ -16,8 +16,8 @@ import org.springframework.validation.MapBindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.validation.ValidationUtils;
 
-import de.cronn.reflection.util.ClassUtils;
-import de.cronn.reflection.util.PropertyGetter;
+//import de.cronn.reflection.util.ClassUtils;
+//import de.cronn.reflection.util.PropertyGetter;
 import lombok.AllArgsConstructor;
 
 public class SpringErrorsLearningTest {
@@ -53,37 +53,37 @@ public class SpringErrorsLearningTest {
 		System.out.println(mapper.writeValueAsString(errors.getGlobalErrors()));
 	}
 
-	@ParameterizedTest
-	@CsvSource({ "a", "b", "c", "d" })
-
-	public void test3() throws JsonProcessingException {
-		NetworkPlan networkPlan = new NetworkPlan();
-		networkPlan.setId("myId");
-
-		ObjectContext<NetworkPlan> $networkPlan = new ObjectContext<>(networkPlan);
-		$networkPlan.validate(NetworkPlan::getId);
-
-	}
-
-	@AllArgsConstructor
-	@SuppressWarnings("unchecked")
-	public static class ObjectContext<T> {
-		private final T target;
-
-//		public void validate(TypedPropertyGetter<T, String> typedPropertyGetter) {
-		public void validate(PropertyGetter<T> pg) {
-//			PropertyGetter<T> pg = bean -> typedPropertyGetter.get(bean);
-			String methodName = ClassUtils.getMethodName((Class<T>) target.getClass(), pg);
-//			String methodName = PropertyUtils.getPropertyName((Class<T>) target.getClass(), propertyGetter);
-			String value = String.class.cast(pg.get(target));
-			System.out.printf("%s=%s\n", methodName, value);
-
-//			BeanPropertyBindingResult errors = new BeanPropertyBindingResult(target, "networkPlan");
+//	@ParameterizedTest
+//	@CsvSource({ "a", "b", "c", "d" })
 //
-//			ValidationUtils.rejectIfEmpty(errors, "id", "e1");
+//	public void test3() throws JsonProcessingException {
+//		NetworkPlan networkPlan = new NetworkPlan();
+//		networkPlan.setId("myId");
 //
-//			System.out.println(mapper.writeValueAsString(errors.getFieldErrors()));
-//			System.out.println(mapper.writeValueAsString(errors.getGlobalErrors()));
-		}
-	}
+//		ObjectContext<NetworkPlan> $networkPlan = new ObjectContext<>(networkPlan);
+//		$networkPlan.validate(NetworkPlan::getId);
+//
+//	}
+//
+//	@AllArgsConstructor
+//	@SuppressWarnings("unchecked")
+//	public static class ObjectContext<T> {
+//		private final T target;
+//
+////		public void validate(TypedPropertyGetter<T, String> typedPropertyGetter) {
+//		public void validate(PropertyGetter<T> pg) {
+////			PropertyGetter<T> pg = bean -> typedPropertyGetter.get(bean);
+//			String methodName = ClassUtils.getMethodName((Class<T>) target.getClass(), pg);
+////			String methodName = PropertyUtils.getPropertyName((Class<T>) target.getClass(), propertyGetter);
+//			String value = String.class.cast(pg.get(target));
+//			System.out.printf("%s=%s\n", methodName, value);
+//
+////			BeanPropertyBindingResult errors = new BeanPropertyBindingResult(target, "networkPlan");
+////
+////			ValidationUtils.rejectIfEmpty(errors, "id", "e1");
+////
+////			System.out.println(mapper.writeValueAsString(errors.getFieldErrors()));
+////			System.out.println(mapper.writeValueAsString(errors.getGlobalErrors()));
+//		}
+//	}
 }
